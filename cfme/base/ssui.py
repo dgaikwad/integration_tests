@@ -31,10 +31,6 @@ class SSUISettingsNavDropdown(NavDropdown):
             './/i[contains(@class, "{}")]] '
             'and contains(@class, "dropdown")]'.format(PFIcon.icons.USER))
 
-    # override NavDropdown locator implementation
-    def __init__(self, locator):
-        self.locator = locator
-
 
 class SSUIHelpNavDropdown(NavDropdown):
     ROOT = '//nav//li[@ng-if="vm.permissions.helpMenu"]'
@@ -50,7 +46,7 @@ class SSUIBaseLoggedInPage(View):
     navigation = SSUIVerticalNavigation('//ul[@class="list-group"]')
     domain_switcher = Button(id="domain-switcher")
     shopping_cart = Text('.//li/a[@title="Shopping cart"]')
-    settings = SSUISettingsNavDropdown(".//li/a[@title='admin']")
+    settings = SSUISettingsNavDropdown()
 
     @property
     def is_displayed(self):
